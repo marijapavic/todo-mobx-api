@@ -1,38 +1,237 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main {
+  position: fixed;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.status {
+  float: right;
+  padding-bottom: 5px;
+}
+
+.form-container {
+  width: 100%;
+  margin-bottom: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border-radius: calc(0.5 * 100px);
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.38);
+  justify-content: space-evenly;
+}
+
+.input {
+  font-size: 15px;
+  width: 85%;
+  border-radius: calc(0.5 * 100px);
+  padding-left: 10px;
+}
+
+.submit-btn {
+  color: #5b5b5b;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.input,
+.submit-btn {
+  height: 45px;
+  outline: none;
+  border: none;
+}
+
+.div-filter {
+  height: 15px;
+}
+
+.filter {
+  float: right;
+}
+
+.select {
+  padding: 3px;
+  background-color: #ccc;
+  border: none;
+  outline: none;
+  border-radius: calc(0.5 * 100px);
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  font-size: 15px;
+  margin: 5px;
+  padding: 10px 0;
+}
+
+.checkbox {
+  float: left;
+  margin-right: 10px;
+  margin-top: 3px;
+  width: 1.2em;
+  height: 1.2em;
+  cursor: pointer;
+  accent-color: rgb(182, 178, 178);
+}
+
+.todo {
+  border: 1px solid transparent;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: rgb(131, 131, 131);
+  text-decoration-color: black;
+  text-decoration-thickness: 2px;
+}
+
+.todo-edit {
+  width: 80%;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.todo-edit:focus {
+  outline: none;
+}
+
+.delete-btn {
+  font-size: 10px;
+  cursor: pointer;
+  float: right;
+  height: 30px;
+  width: 40px;
+  border: none;
+  margin: -25px 10px 0 10px;
+}
+
+#light {
+  background-color: #fff;
+}
+
+#dark {
+  background-color: #3c3c3c;
+}
+
+#light .main,
+#light .container,
+#light .inner,
+#light .form-container,
+#light .input,
+#light .li,
+#light .submit-btn,
+#light .delete-btn {
+  background-color: #fff;
+  color: black;
+}
+
+#dark .main,
+#dark .inner,
+#dark .container,
+#dark .li,
+#dark .delete-btn,
+#dark .todo-edit {
+  background-color: #3c3c3c;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#dark .form-container {
+  background-color: #939393;
+  box-shadow: 0 1px 6px 0 rgba(253, 253, 253, 0.38);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#dark .input {
+  background-color: #939393;
+  color: black;
+}
+
+#dark .submit-btn {
+  background-color: #939393;
+}
+
+/*SWITCH*/
+.switch-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: -10px;
+}
+
+.toggletext {
+  padding: 7px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #939393;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #939393;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
